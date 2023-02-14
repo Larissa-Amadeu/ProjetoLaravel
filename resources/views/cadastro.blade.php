@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>TR-Design</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/cadastro.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+        <!-- ======= Header ======= -->
+      <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+
+          <h1 class="logo"><a href="index.html">TR DESIGN</a></h1>
+            <!-- logo -->
+            <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+          <nav id="navbar" class="navbar">
+            <ul> 
+              <li><a class="nav-link scrollto" href="#">INÍCIO</a></li>
+              <li><a class="nav-link scrollto active" href="{{ route ('route_cadastro')}}">CADASTRO</a></li>
+              <li><a class="getstarted scrollto" href="{{ route ('route_login')}}">ACESSAR</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+        </div>  
+      </header>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5">
+              <div class="card-body p-4 p-sm-5">
+                <h2 class="tit text-center mb-5">CADASTRO</h2>
+                <form>
+                  <div class="form-floating mb-3">
+                    <input type="name" class="form-control" id="floatingInput" placeholder="name">
+                    <label for="floatingInput">Nome</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="name" class="form-control" id="floatingInput" placeholder="name">
+                    <label for="floatingInput">Empresa</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">E-mail</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Senha</label>
+                  </div>
+    
+                  
+                  <div class="d-grid">
+                    <button class="w-100 btn btn-lg btn-primary text-uppercase fw-bold" type="submit">CADASTRAR</button>
+                  </div>
+                  
+                  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
