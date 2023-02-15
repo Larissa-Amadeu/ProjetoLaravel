@@ -1,0 +1,25 @@
+CREATE TABLE "usuarios" (
+	"id" serial NOT NULL,
+	"nome" varchar(255) NOT NULL,
+	"email" varchar(255) NOT NULL,
+	"empresa" varchar(255) NOT NULL,
+	"password" varchar(300) NOT NULL,
+	CONSTRAINT "usuarios_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "project" (
+	"id" serial NOT NULL,
+	"nome" varchar(255) NOT NULL,
+	"descricao" TEXT NOT NULL,
+	"plataforma" varchar(255) NOT NULL,
+	"id_proprietario" integer NOT NULL,
+	CONSTRAINT "project_pk" PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
