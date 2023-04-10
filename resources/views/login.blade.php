@@ -40,8 +40,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           
-          <li><a class="nav-link scrollto" href="#">INÍCIO</a></li>
-          <li><a class="nav-link scrollto active" href="{{ route ('route_login')}}">ACESSAR</a></li>
+          <li><a class="nav-link scrollto" href="{{ route ('route_inicio')}}">INÍCIO</a></li>
+          <li><a class="nav-link scrollto active" href="login">ACESSAR</a></li>
           <li><a class="getstarted scrollto" href="{{ route ('route_cadastro')}}">CADASTRO</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -56,14 +56,23 @@
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
             <h2 class="tit text-center mb-5">LOGIN</h2>
-            <form>
+            <form action="{{route('login-usuario')}}" method="post">
+            @if(Session::has('succes'))
+                  <div class="alert alert-success">{{Session::get('success')}}</div>
+                  @endif
+                  @if(Session::has('fail'))
+                  <div class="alert alert-danger">{{Session::get('success')}}</div>
+                  @endif
+              @csrf
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">E-mail</label>
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                <label for="email">E-mail</label>
+                <span class="text-danger">@error('email'){{$message}}@enderror</span>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Senha</label>
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                <label for="password">Senha</label>
+                <span class="text-danger">@error('password'){{$message}}@enderror</span>
               </div>
 
               <div class="form-check mb-3">
@@ -77,6 +86,7 @@
               </div>
               
               
+      
             </form>
           </div>
         </div>
