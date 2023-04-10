@@ -39,11 +39,16 @@
       <nav id="navbar" class="navbar">
         <ul>
           
-          <li><a class="nav-link scrollto" href="#">INÍCIO</a></li>
-          <li><a class="nav-link scrollto" href="#contact">MEUS PROJETOS</a></li>
-          <li><a class="nav-link scrollto active" href="{{ route ('route_form')}}">NOVO PROJETO</a></li>
-          <li><a class="nav-link scrollto" href="#contact">TR-MODEL</a></li>
-          <li><a class="getstarted scrollto" href="#">SAIR</a></li>
+          <li><a class="nav-link scrollto" href="{{ route ('route_inicio')}}">INÍCIO</a></li>
+          <li><a class="nav-link scrollto" href="{{ route ('route_formulario')}}">MEUS PROJETOS</a></li>
+          <li><a class="nav-link scrollto active" href="{{ route ('route_formulario')}}">NOVO PROJETO</a></li>
+          <li><a class="nav-link scrollto" href="{{ route ('route_inicio')}}">TR-MODEL</a></li>
+          <li><td><a class="getstarted scrollto" name="logout" href="logout">SAIR</a></li></td>
+          <thead>
+            <td>{{$data->name}}</td>
+            <br>
+            <td>{{$data->email}}</td>
+         </thead>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -98,17 +103,17 @@
     
                   <div class="tab-pane fade show active" id="tab1">
                     <!-- Floating Labels Form -->
-                    <form class="row g-3">
+                    <form class="row g-3" action="{{route('formulario-usuario')}}" method="post">
                       <div class="col-md-6">
                         <div class="form-floating">
-                          <input type="name" class="form-control" id="floatingName" placeholder="Nome do Projeto">
+                          <input type="name" class="form-control" id="floatingName" placeholder="nomeProjeto" name="nomeProjeto">
                           <label for="floatingName">Nome do Projeto</label>
                         </div>
                       </div>
                 
                       <div class="col-md-6">
                         <div class="form-floating mb-3">
-                          <select class="form-select" id="floatingSelect" aria-label="State">
+                          <select class="form-select" id="floatingSelect" aria-label="State" placeholder="desktop" name="desktop">
                             <option selected>Desktop</option>
                             <option value="1">Web</option>
                             <option value="2">Mobile</option>
@@ -119,7 +124,7 @@
                       </div>
                       <div class="col-12">
                         <div class="form-floating">
-                          <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                          <textarea class="form-control" placeholder="descricao" name="descricao" id="floatingTextarea" style="height: 100px;"></textarea>
                           <label for="floatingTextarea">Descrição do Projeto</label>
                         </div>
                       </div>
