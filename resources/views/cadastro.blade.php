@@ -39,7 +39,7 @@
 
           <nav id="navbar" class="navbar">
             <ul> 
-              <li><a class="nav-link scrollto" href="#">INÍCIO</a></li>
+              <li><a class="nav-link scrollto" href="{{ route ('route_inicio')}}">INÍCIO</a></li>
               <li><a class="nav-link scrollto active" href="{{ route ('route_cadastro')}}">CADASTRO</a></li>
               <li><a class="getstarted scrollto" href="{{ route ('route_login')}}">ACESSAR</a></li>
             </ul>
@@ -54,22 +54,33 @@
             <div class="card border-0 shadow rounded-3 my-5">
               <div class="card-body p-4 p-sm-5">
                 <h2 class="tit text-center mb-5">CADASTRO</h2>
-                <form>
+                <form action="{{route('cadastro-usuario')}}" method="post">
+                  @if(Session::has('success'))
+                  <div class="alert alert-success">{{Session::get('success')}}</div>
+                  @endif
+                  @if(Session::has('fail'))
+                  <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                  @endif
+                  @csrf
                   <div class="form-floating mb-3">
-                    <input type="name" class="form-control" id="floatingInput" placeholder="name">
+                    <input type="name" class="form-control" id="floatingInput" placeholder="name" name="name" value="{{old('name')}}">
                     <label for="floatingInput">Nome</label>
+                    <span class="text-danger">@error('name'){{$message}}@enderror</span>
                   </div>
                   <div class="form-floating mb-3">
-                    <input type="name" class="form-control" id="floatingInput" placeholder="name">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="empresa" name="empresa">
                     <label for="floatingInput">Empresa</label>
+                    <span class="text-danger">@error('name'){{$message}}@enderror</span>
                   </div>
                   <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value="{{old('email')}}">
                     <label for="floatingInput">E-mail</label>
+                    <span class="text-danger">@error('email'){{$message}}@enderror</span>
                   </div>
                   <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" value="{{old('password')}}">
                     <label for="floatingPassword">Senha</label>
+                    <span class="text-danger">@error('password'){{$message}}@enderror</span>
                   </div>
     
                   
