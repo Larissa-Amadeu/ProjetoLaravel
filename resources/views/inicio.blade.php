@@ -39,11 +39,11 @@
       <nav id="navbar" class="navbar">
         <ul>
           
-          <li><a class="nav-link scrollto active" href="#">INÍCIO</a></li>
-          <li><a class="nav-link scrollto" href="#contact">MEUS PROJETOS</a></li>
-          <li><a class="nav-link scrollto" href="{{ route ('route_form')}}">NOVO PROJETO</a></li>
-          <li><a class="nav-link scrollto" href="#contact">TR-MODEL</a></li>
-          <li><a class="getstarted scrollto" href="{{ route ('route_login')}}">ACESSAR</a></li>
+          <li><a class="nav-link scrollto active" href="{{ route ('route_inicio')}}">INÍCIO</a></li>
+          <li><a class="nav-link scrollto" href="{{ route ('route_inicio')}}">MEUS PROJETOS</a></li>
+          <li><a class="nav-link scrollto" href="{{ route ('route_formulario')}}">NOVO PROJETO</a></li>
+          <li><a class="nav-link scrollto" href="{{ route ('route_inicio')}}">TR-MODEL</a></li>
+          <li><a class="getstarted scrollto" href="login">ACESSAR</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -78,7 +78,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-pencil-square"></i></div>
-              <h4 class="title"><a href="{{ route ('route_cadastro')}}">CADASTRAR</a></h4>
+              <h4 class="title"><a href="#">CADASTRAR</a></h4>
         
             </div>
           </div>
