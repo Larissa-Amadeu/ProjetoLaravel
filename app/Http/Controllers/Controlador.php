@@ -94,18 +94,17 @@ class Controlador extends Controller
 
   // ------- SAVE SECTION "DADOS DO PROJETO" -----
     
-    public function formularioUsuario (Request $request){
-        return $this->hasMany("App/Models/Formulario");
+   public function formularioUsuario (Request $request){
         $request->validate([
             'nomeProjeto'=> 'required',
             'desktop'=>'required',
             'descricao'=>'required',
          ]);
  
-         $dado = new Formulario();
-         $dado->nomeProjeto=$request->nomeProjeto;
-         $dado->desktop=$request->desktop;
-         $dado->descricao=$request->descricao;
+         $formulario = new Formulario();
+         $formulario->nomeProjeto=$request->nomeProjeto;
+         $formulario->desktop=$request->desktop;
+         $formulario->descricao=$request->descricao;
          $res= $dado->save();
          if($res){
                 return back()->with('succes' );
