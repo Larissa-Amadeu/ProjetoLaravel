@@ -9,8 +9,8 @@ class Formulario extends Model
 {
     use HasFactory;
 
-public function formularios(){
-    return $this->hasMany('App\Models\Cadastro');
+public function cadastro(){
+    return $this->belongsTo('App\Models\Cadastro');
 }
 
 }
