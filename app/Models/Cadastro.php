@@ -9,8 +9,10 @@ class Cadastro extends Model
 {
     use HasFactory;
 
-    public function user() {
-        return $this->belongsTo('App\Models\Formulario');
+    public function formularios() {
+        return $this->hasMany('App\Models\Formulario');
     }
 }
+
+
 
