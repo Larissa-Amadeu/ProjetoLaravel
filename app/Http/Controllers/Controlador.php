@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cadastro;
-use App\Models\Dado;
+use App\Models\Formulario;
 use Hash;
 use Session;
 
