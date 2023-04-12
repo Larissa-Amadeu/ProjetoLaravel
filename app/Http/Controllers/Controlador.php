@@ -105,12 +105,8 @@ class Controlador extends Controller
          $formulario->nomeProjeto=$request->nomeProjeto;
          $formulario->desktop=$request->desktop;
          $formulario->descricao=$request->descricao;
-         $res= $formulario->save();
-         if($res){
-                return back()->with('succes' );
-         }else{
-                return back()->with('fail');
-         }
+         $formulario->save();
+         
          
 }
 }
