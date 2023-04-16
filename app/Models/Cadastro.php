@@ -8,11 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Cadastro extends Model
 {
     use HasFactory;
+    protected $table = 'cadastros';
+    protected $connection = 'pgsql';
+    protected $fillable = [
+        'nome',
+        'email',
+        'password',
+        'empresa',
+    ];
+
+
 
     public function formularios() {
-        return $this->hasMany('App\Models\Formulario');
+        return $this->hasMany(Formulario::class);
+       
     }
+
+    
 }
+
 
 
 
