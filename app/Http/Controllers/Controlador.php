@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cadastro;
 use App\Models\Formulario;
+use App\Models\Proposito;
 use Hash;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class Controlador extends Controller
@@ -94,19 +96,41 @@ class Controlador extends Controller
 
   // ------- SAVE SECTION "DADOS DO PROJETO" -----
     
-   public function formularioUsuario (Request $request){
-        $request->validate([
-            'nomeProjeto'=> 'required',
-            'desktop'=>'required',
-            'descricao'=>'required',
-         ]);
- 
-         $formulario = new Formulario();
-         $formulario->nomeProjeto=$request->nomeProjeto;
-         $formulario->desktop=$request->desktop;
-         $formulario->descricao=$request->descricao;
-         $formulario->save();
-         
-         
-}
+    public function formularioUsuario (Request $request){
+        
+         if(Session::has('loginId')){
+
+            $request->validate([
+                'nomeProjeto'=> 'required',
+                'descricao'=>'required'
+             ]);
+
+            $formulario = new Formulario();
+            $formulario->nomeProjeto=$request->nomeProjeto;
+            $formulario->descricao=$request->descricao;
+            $formulario->cadastro_id = Session::get('loginId');
+            $formulario->save();
+            
+         }
+
+     }
+
+     // FORMULARIO PROPÓSITO DE USO 
+     public function propositoDeUso (Request $request){
+        
+        if(Session::has('cadastro_id')){
+
+           $request->validate([
+               'descricao'=>'required',
+            ]);
+
+           $proposito = new Proposito();
+           $proposito->descricao=$request->descricao;
+           $proposito->proposito_id = Session::get('cadastro_id');
+           $proposito->save();
+        }
+
+    }
+
+
 }
