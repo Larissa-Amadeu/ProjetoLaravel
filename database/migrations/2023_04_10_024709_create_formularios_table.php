@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('formularios', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('cadastro_id');
+            $table->foreign('cadastro_id')->references('id')->on('cadastros')->onDelete('cascade')->nullable(false);
             $table->string('nomeProjeto');
-            $table->string('desktop');
             $table->string('descricao');
-            $table->timestamps();
+            $table->timestamps();       
+            
         });
     }
 
@@ -29,6 +31,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('formularios');
-    }
+        Schema::table('formularios', function (Blueprint $table) {
+        $table->foreing('cadastro_id')->constrained()->onDelete('cascade');
+    });
+   }
+    
 };
