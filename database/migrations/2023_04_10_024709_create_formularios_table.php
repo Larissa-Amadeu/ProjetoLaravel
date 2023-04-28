@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('formularios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cadastro_id');
+            $table->unsignedBigInteger('cadastro_id')->unique()->nullable(false);
             $table->foreign('cadastro_id')->references('id')->on('cadastros')->onDelete('cascade')->nullable(false);
             $table->string('nomeProjeto');
+            $table->integer('plataforma')->nullable();
             $table->string('descricao');
-            $table->timestamps();       
+            $table->timestamps();
+
             
         });
     }
