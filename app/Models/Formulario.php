@@ -13,17 +13,20 @@ class Formulario extends Model
     protected $fillable = [
         'nomeProjeto',
         'descricao',
+        'plataforma',
     ];
 
-public function cadastro(){
+    // FORMULARIO --> CADASTRO
+    public function cadastro(){
     return $this->belongsTo(Cadastro::class);
     }
 
     public function propositos() {
-        return $this->hasMany(Formulario::class);
+        return $this->hasMany(Proposito::class);
        
     }
 }
+
 
 
 
