@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Cadastro;
 use App\Models\Formulario;
 use App\Models\Proposito;
+use App\Models\Compartilhamento;
 use Hash;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -44,12 +45,14 @@ class Controlador extends Controller
          $cadastro->password=Hash::make($request->password);
          $cadastro->empresa=$request->empresa;
          $res= $cadastro->save();
+         return redirect('login');
          if($res){
                 return back()->with('succes', 'Usuário registrado com sucesso' );
          }else{
                 return back()->with('fail','algo deu errado');
          }
         }
+
 
         // ------- lOGIN -----
         
@@ -72,6 +75,7 @@ class Controlador extends Controller
                 return back()->with('fail', 'Email não registrado');
              }
          }
+        
 
          // ------- VIEW FORMULARIO -----
 
@@ -99,38 +103,62 @@ class Controlador extends Controller
     public function formularioUsuario (Request $request){
         
          if(Session::has('loginId')){
-
             $request->validate([
                 'nomeProjeto'=> 'required',
-                'descricao'=>'required'
+                'descricao'=>'required',
+                'plataforma' => 'required|integer',
              ]);
 
             $formulario = new Formulario();
             $formulario->nomeProjeto=$request->nomeProjeto;
             $formulario->descricao=$request->descricao;
+            $formulario->plataforma = $request->plataforma;
             $formulario->cadastro_id = Session::get('loginId');
             $formulario->save();
-            
+            return redirect('formulario');
+
          }
 
      }
+     
 
      // FORMULARIO PROPÓSITO DE USO 
      public function propositoDeUso (Request $request){
-        
-        if(Session::has('cadastro_id')){
+              
+        if(Session::has('loginId')){
 
            $request->validate([
                'descricao'=>'required',
             ]);
 
+            $formulario = new Formulario();
+            $formulario = Formulario::latest()->pluck('id')->first();
+            
            $proposito = new Proposito();
            $proposito->descricao=$request->descricao;
-           $proposito->proposito_id = Session::get('cadastro_id');
+           $proposito->baseLegal=$request->baseLegal;
+           $proposito->formulario_id =$formulario;
            $proposito->save();
         }
-
     }
 
+    // FORMULARIO PROPÓSITO DE USO 
+    public function compartilhamento (Request $request){
+              
+        if(Session::has('loginId')){
 
+           $request->validate([
+               'justificativa'=>'required',
+            ]);
+
+            $formulario = new Formulario();
+            $formulario = Formulario::latest()->pluck('id')->first();
+            
+           $proposito = new Compartilhamento();
+           $proposito->descricao=$request->descricao;
+           $proposito->baseLegal=$request->baseLegal;
+           $proposito->formulario_id =$formulario;
+           $proposito->save();
+        }
+    }
 }
