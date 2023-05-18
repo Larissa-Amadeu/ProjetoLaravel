@@ -171,16 +171,158 @@
                         <h4>Base Legal</h4>
                         <br>
                         <textarea type="name" class="form-control" id="floatingName" name="baseLegal" placeholder="Texto Contendo a Lei que ampara o uso de dados"></textarea>
-                        <br>
-                        <div class="text-center">
-                          <button type="submit" class="btn btn-primary">Documentação</button>
-                        </div>
+                        <br>  
                       </div>
                     </div>
 
-                    
+                    <div class="card">  <!-- inicio -->
+                      <div class="card-body">
+                        <br>
+                        <h4>Selecionar início de Evento de propósito de uso</h4>
+                        <br>
 
-                    <section id="testimonials" class="testimonials section-bg">
+                        <style type="text/css">
+                          .d-none {
+                            display: none;
+                          }
+                        </style>
+
+                        <div class="form-floating mb-3">
+                          <select id="selecao" class="form-select" aria-label="State" onchange="enableDiv();">
+                            <option selected value="0">Ambos</option>
+                            <option value="1">Data/Hora</option>
+                            <option value="2">Ação</option>
+                          </select>
+                          <label for="floatingSelect">Tipo</label>
+                        </div>
+        
+                      <div class="row g-3">
+                        <div id = "data1" class="col-md-6">
+                          <div class="form-floating">
+                            <input type="date" class="form-control" id="floatingName" placeholder="Nome do Projeto">
+                            <label for="floatingName">Início da execução </label>
+                          </div>
+                        </div>
+                        <div  id ="data2" class="col-md-6">
+                          <div class="form-floating mb-3">
+                            <input type="date" class="form-control" id="floatingName" placeholder="Nome do Projeto">
+                              <label for="floatingTextarea">Término da execução</label>
+                          </div>
+                        </div> 
+
+                        <div class="col-6">
+                          <div id="box1" class="form-floating">
+                            <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                            <label for="floatingTextarea">Descreva o evento de início de propósito</label>
+                          </div>
+                        </div>
+                        
+                        <div class="col-6">
+                          <div id="box2" class="form-floating">
+                            <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                            <label for="floatingTextarea">Descreva o evento de término de propósito</label>
+                          </div>
+                        </div>
+</div>
+                        <script type="text/javascript">
+                          function enableDiv(){
+                            var selectedValue = document.getElementById("selecao").value;
+                            console.log(selectedValue);
+                            if(selectedValue == 0){
+                              document.getElementById('box1').style.display = "block";
+                              document.getElementById('box2').style.display = "block";
+                              document.getElementById('data1').style.display = "block";
+                              document.getElementById('data2').style.display = "block";
+                            }
+                            if(selectedValue == 1){
+                              document.getElementById('data1').style.display = "block";
+                              document.getElementById('data2').style.display = "block";
+                              document.getElementById('box1').style.display = "none";
+                              document.getElementById('box2').style.display = "none";
+                            }
+                            if(selectedValue == 2){
+                              document.getElementById('box1').style.display = "block";
+                              document.getElementById('box2').style.display = "block";
+                              document.getElementById('data1').style.display = "none";
+                              document.getElementById('data2').style.display = "none";
+                            }
+                          };
+                        </script>
+                     
+                        </div>
+                       </div>
+                          <div class="card">
+                            <div class="card-body">
+                              <br>
+                              <h4>Selecionar fim de Evento de propósito de uso</h4> <!-- fim -->
+                              <br>
+                              <div class="form-floating mb-3">
+                                <select id="selecao2" class="form-select" aria-label="State" onchange="enableDiv2();">
+                                  <option selected value="0">Ambos</option>
+                                  <option value="1">Data/Hora</option>
+                                  <option value="2">Ação</option>
+                                </select>
+                                <label for="floatingSelect">Tipo</label>
+                              </div>
+                          <div class="row g-3">
+                              <div id="datafim1" class="col-md-6">
+                                <div class="form-floating">
+                                  <input type="date" class="form-control" id="floatingName" placeholder="Nome do Projeto">
+                                  <label for="floatingName">Início da execução </label>
+                                </div>
+                              </div>
+                              <div id="datafim2" class="col-md-6">
+                                <div class="form-floating mb-3">
+                                  <input type="date" class="form-control" id="floatingName" placeholder="Nome do Projeto">
+                                    <label for="floatingTextarea">Término da execução</label>
+                                </div>
+                              </div> 
+                              <div id="boxfim1" class="col-6">
+                                <div class="form-floating">
+                                  <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                                  <label for="floatingTextarea">Descreva o evento de início de propósito</label>
+                                </div>
+                              </div>
+                        
+                            <div id="boxfim2" class="col-6">
+                              <div class="form-floating">
+                                <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                                <label for="floatingTextarea">Descreva o evento de término de propósito</label>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+
+                    <script type="text/javascript">
+                      function enableDiv2(){
+                        var selectedValue = document.getElementById("selecao2").value;
+                        console.log(selectedValue);
+                        if(selectedValue == 0){
+                          document.getElementById('boxfim1').style.display = "block";
+                          document.getElementById('boxfim2').style.display = "block";
+                          document.getElementById('datafim1').style.display = "block";
+                          document.getElementById('datafim2').style.display = "block";
+                        }
+                        if(selectedValue == 1){
+                          document.getElementById('datafim1').style.display = "block";
+                          document.getElementById('datafim2').style.display = "block";
+                          document.getElementById('boxfim1').style.display = "none";
+                          document.getElementById('boxfim2').style.display = "none";
+                        }
+                        if(selectedValue == 2){
+                          document.getElementById('boxfim1').style.display = "block";
+                          document.getElementById('boxfim2').style.display = "block";
+                          document.getElementById('datafim1').style.display = "none";
+                          document.getElementById('datafim2').style.display = "none";
+                        }
+                      };
+                    </script>
+
+                <!--   <div class="text-center">
+                          <button type="submit" class="btn btn-primary">Documentação</button>
+                        </div>
+                   <section id="testimonials" class="testimonials section-bg">
                       <div class="container" data-aos="fade-up">
                         <div class="section-title">
                           <h4>CONTROLADORES</h4>
@@ -196,7 +338,7 @@
                                 
                                 
                               </div>
-                            </div><!-- End testimonial item -->
+                            </div>
 
                             <div class="swiper-slide">
                               <div class="testimonial-item">
@@ -205,7 +347,7 @@
                                 
                                 
                               </div>
-                            </div><!-- End testimonial item -->
+                            </div>
 
                             <div class="swiper-slide">
                               <div class="testimonial-item">
@@ -214,7 +356,7 @@
                                 
                                 
                               </div>
-                            </div><!-- End testimonial item -->
+                            </div>
 
                             <div class="swiper-slide">
                               <div class="testimonial-item">
@@ -223,7 +365,7 @@
                                 
                                 
                               </div>
-                            </div><!-- End testimonial item -->
+                            </div>
 
                             <div class="swiper-slide">
                               <div class="testimonial-item">
@@ -232,16 +374,16 @@
                                 
                                
                               </div>
-                            </div><!-- End testimonial item -->
+                            </div>
 
                           </div>
                           <div class="swiper-pagination"></div>
-                        </div>
+                        </div> 
 
                       </div>
 
                     </section>
-                    <br>
+                    <br>End testimonial item -->
                     
           
 
@@ -260,8 +402,8 @@
                   
                  <form class="tab-pane fade show" action="{{route('compartilhamento')}}" id="tab3" method="POST"> 
                     @csrf   
-                  
                     <br>
+
                     <form class="row g-3"> 
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
@@ -272,10 +414,11 @@
                         </select>
                         <label for="floatingSelect">Campo de seleção</label>
                       </div>
-                    </div>
+                    </div>   
+
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <input type="name" class="form-control" id="floatingName" placeholder="Nome do Projeto">
+                        <input type="name" class="form-control" name="baseLegal" id="floatingName" placeholder="Nome do Projeto">
                         <label for="floatingName">Base Legal - Inserir texto ou link da lei</label>
                       </div>
                     </div>
@@ -291,14 +434,14 @@
                         <br>
                     <div class="col-12">
                       <div class="form-floating">
-                        <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                        <textarea class="form-control" placeholder="Address" name="acoes" id="floatingTextarea" style="height: 100px;"></textarea>
                         <label for="floatingTextarea">Indique as ações ou eventos que levam ao processo de Transferência, Compartilamento ou Divulgação</label>
                       </div>
                     </div>
                     <br> 
 
                         
-                        <div class="card">
+                    <!--    <div class="card">
                           <div class="card-body">
                             <br>
                             <p class="card-text">Selecione imagens ou vídeos que mostram em que momento o usuário autoriza a Coleta, Manipulação, Transferência, Compartilhamento ou Divulgação dos Dados Pessoais.</p>
@@ -308,8 +451,8 @@
                               <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Adicionar</button>
                             </div>
                           </div>
-                        </div>
-              
+                        </div>  -->
+
                         <div class="text-center">
                           <button type="submit" class="btn btn-primary">Salvar</button>
                           <button type="reset" class="btn btn-secondary">Cancelar</button>
@@ -360,8 +503,7 @@
                     <!-- End Bordered Table -->
                 
                  
-                  <form class="tab-pane fade show active" id="tab4">
-                      @csrf
+        
                       <!-- Floating Labels Form -->
                       <br><br>
                       <div class="">
@@ -401,7 +543,7 @@
                               </div>
                           </div>
                         
-                                <div class="card">
+                           <!--     <div class="card">
                                   <div class="card-body">
                                     <br>
                                     <p class="card-text">Selecione imagens ou vídeos que mostram em que momento o usuário autoriza a Coleta, Manipulação, Transferência, Compartilhamento ou Divulgação dos Dados Pessoais.</p>
@@ -411,7 +553,7 @@
                                       <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Adicionar</button>
                                     </div>
                                   </div>
-                                </div>
+                                </div> -->
 
                         
                           <div class="text-center">
@@ -425,7 +567,8 @@
 
                 <!-- Tab 5 Content -->
     
-                <div class="tab-pane fade show" id="tab5"> 
+                <form class="tab-pane fade show" id="tab5" action="{{route('atores')}}" method="POST" > 
+                  @csrf
                       <table class="table table-bordered">
                         <thead>
                           <tr>
@@ -472,17 +615,17 @@
                           <br>
                       </div>
                   
-                      <form class="row g-3">
+                      <div class="row g-3">
                         <div class="col-md-6">
                           <div class="form-floating">
-                            <input type="name" class="form-control" id="floatingName" placeholder="Nome do Projeto">
+                            <input type="name" class="form-control" id="floatingName" name="nome" placeholder="Nome do Projeto">
                             <label for="floatingName">Nome</label>
                           </div>
                         </div>
 
-                        <div class="col-md-6">
+                      <div class="col-md-6">
                           <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" aria-label="State">
+                            <select class="form-select" id="floatingSelect" aria-label="State" name="tipo">
                               <option selected>Controlador</option>
                               <option value="1">Operador</option>
                               <option value="2">Destinatário</option>
@@ -490,11 +633,11 @@
                             </select>
                             <label for="floatingSelect">Tipo</label>
                           </div>
-                        </div>
+                        </div> 
 
                           <div class="form-group col-md-6">
                             <div class="form-floating mb-3" >
-                              <input type="email" class="form-control" id="inputEmail4" placeholder="Email"  placeholder="Nome do Projeto">
+                              <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email"  placeholder="Nome do Projeto">
                             <label for="inputEmail4">Email</label>
                           </div>
                         </div>
@@ -502,41 +645,44 @@
                         
                           <div class="form-group col-md-6">
                             <div class="form-floating mb-3" >
-                              <input type="email" class="form-control" id="inputEmail4" placeholder="Email"  placeholder="Nome do Projeto">
+                              <input type="name" class="form-control" id="floatingName" name="telefone" placeholder="Email"  placeholder="Nome do Projeto">
                             <label for="inputEmail4">Telefone</label>
                           </div>
                         </div>
 
                           <div class="col-12">
                             <div class="form-floating">
-                              <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                              <textarea class="form-control" placeholder="Address" name="agencia" id="floatingTextarea" style="height: 100px;"></textarea>
                               <label for="floatingTextarea">Agência de Proteção de Dados</label>
                             </div>
                           <br>
                         </div>
+                      </div>
 
                           <div class="font-endereco">
                             <br>
                             <h4>Endereço</h4>
                         </div>
+                        <br>
                           
+                        <div class="row g-3">
                           <div class="col-md-6" >
                           <div class="form-floating mb-3" >
-                            <input type="text" class="form-control" id="inputAddress" id="floatingName" placeholder="Nome do Projeto">
+                            <input type="text" class="form-control" name="rua" id="inputAddress" id="floatingName" placeholder="Nome do Projeto">
                             <label for="floatingName">Rua</label>    
                           </div>
                         </div>
 
                           <div class="form-group col-md-3" >
                           <div class="form-floating mb-3" >
-                            <input type="text" class="form-control" id="inputZip" placeholder="Nome do Projeto">
+                            <input type="text" class="form-control" name="numero" id="inputZip" placeholder="Nome do Projeto">
                             <label for="inputZip">Número</label>
                           </div>
                         </div>
 
                           <div class="form-group col-md-3">
                             <div class="form-floating mb-3" >
-                              <input type="text" class="form-control" id="inputZip" placeholder="Nome do Projeto">
+                              <input type="text" class="form-control" id="inputZip" name="codigoPostal" placeholder="Nome do Projeto">
                             <label for="inputZip">Código postal</label>
                           
                           </div>
@@ -544,31 +690,34 @@
                           
                             <div class="form-group col-md-6">
                               <div class="form-floating mb-3" >
-                                <input type="text" class="form-control" id="inputCity" placeholder="Nome do Projeto">
+                                <input type="text" class="form-control" name="cidade" id="inputCity" placeholder="Nome do Projeto">
                               <label for="inputCity">Cidade</label>
                             </div>
                           </div>
 
                             <div class="form-group col-md-3">
                               <div class="form-floating mb-3" >
-                                <input type="text" class="form-control" id="inputZip" placeholder="Nome do Projeto">
+                                <input type="text" class="form-control" name="estado" id="inputZip" placeholder="Nome do Projeto">
                               <label for="inputZip">Estado</label>      
                             </div>
                           </div>
 
                             <div class="form-group col-md-3">
                               <div class="form-floating mb-3" >
-                                <input type="text" class="form-control" id="inputZip" placeholder="Nome do Projeto" >  
+                                <input type="text" class="form-control" name="pais" id="inputZip" placeholder="Nome do Projeto" >  
                               <label for="inputZip">País</label>
                             </div>
                           </div> 
+                        </div>
+                        <br>
                         <div class="text-center">
                         <button type="submit" class="btn btn-primary" >Salvar</button>
                       </div>
                 </div>  
-              </div><!-- End Tab 5 Content -->
+              </form><!-- End Tab 5 Content -->
     
-                <div class="tab-pane fade show" id="tab6"> <!-- Tab 6 Content -->
+                <form class="tab-pane fade show" id="tab6" action="{{route('agenciamento')}}" method="POST"> <!-- Tab 6 Content -->
+                 @csrf
                   <table class="table table-bordered">
                     <thead>
                       <tr>
@@ -601,13 +750,31 @@
                     </tbody>              
                   </table>
 
-                </div><!-- End Tab 6 Content -->
+                  <div class="col-md-6" class="row g-3">
+                    <div class="form-floating">
+                      <input type="name" class="form-control" id="floatingName" name="exemplo" placeholder="nomeProjeto" name="nomeProjeto">
+                      <label for="floatingName">exemplo</label>
+                    </div>
+                  </div>
+                  <br>
+                <div class="col-12">
+                  <div class="form-floating">
+                    <textarea class="form-control" placeholder="descricao" name="descricao" id="floatingTextarea" style="height: 100px;"></textarea>
+                    <label for="floatingTextarea">exemplo</label>
+                  </div>
+                </div>
+                <br>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary" >Salvar</button>
+                  <button type="reset" class="btn btn-secondary">Cancelar</button>
+                </div>
+
+              </form><!-- End Tab 6 Content -->
               </div>
               <div class="tab-content">
               <div class="col-lg-6">
                 <img src="assets/img/features-2.png" class="img-fluid" alt="">
               </div>
-      
           </div>
         </section><!-- End Features Section -->
       </div><!-- End Feature Tabs -->
