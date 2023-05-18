@@ -6,6 +6,10 @@ use App\Models\Cadastro;
 use App\Models\Formulario;
 use App\Models\Proposito;
 use App\Models\Compartilhamento;
+use App\Models\Dado;
+use App\Models\Ator;
+use App\Models\Agenciamento;
+
 use Hash;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -83,14 +87,13 @@ class Controlador extends Controller
     {
         $data = array();
         if(Session::has('loginId')){
-            $data = Cadastro::where('id', '=', Session::get('loginId'))->first();        
+            $data = Cadastro::where('id', '=', Session::get('loginId'))->first();  
         }
+
         return view('formulario', compact('data'));
     }
 
     // ------- LOGOUT  -----
-
-      
     public function logout(){
         if(Session::has('loginId')){
            Session::pull('loginId');
@@ -99,7 +102,6 @@ class Controlador extends Controller
 }
 
   // ------- SAVE SECTION "DADOS DO PROJETO" -----
-    
     public function formularioUsuario (Request $request){
         
          if(Session::has('loginId')){
@@ -142,23 +144,112 @@ class Controlador extends Controller
         }
     }
 
-    // FORMULARIO PROPÓSITO DE USO 
+    // FORMULARIO COMPARTILHAMENTO  
     public function compartilhamento (Request $request){
               
         if(Session::has('loginId')){
 
            $request->validate([
                'justificativa'=>'required',
+               'baseLegal'=>'required',
+               'acoes'=>'required',
+
             ]);
 
             $formulario = new Formulario();
             $formulario = Formulario::latest()->pluck('id')->first();
             
-           $proposito = new Compartilhamento();
-           $proposito->descricao=$request->descricao;
-           $proposito->baseLegal=$request->baseLegal;
-           $proposito->formulario_id =$formulario;
-           $proposito->save();
+           $compartilhamento = new Compartilhamento();
+           $compartilhamento->justificativa=$request->justificativa;
+           $compartilhamento->baseLegal=$request->baseLegal;
+           $compartilhamento->acoes=$request->acoes;
+           $compartilhamento->formulario_id =$formulario;
+           $compartilhamento->save();
+        }
+    }
+
+     // FORMULARIO DADOS PESSOAIS 
+     public function dadosPessoais (Request $request){
+              
+        if(Session::has('loginId')){
+
+           $request->validate([
+            'descricao'=>'required',
+            'detalhamento'=>'required',
+            'recurso'=>'required',
+            'acoes'=>'required',
+            ]);
+
+            $formulario = new Formulario();
+            $formulario = Formulario::latest()->pluck('id')->first();
+            
+           $dado = new Dado();
+           $dado->descricao=$request->descricao;
+           $dado->detalhamento=$request->detalhamento;
+           $dado->recurso=$request->recurso;
+           $dado->acoes=$request->acoes;
+           $dado->formulario_id =$formulario;
+           $dado->save();
+        }
+    }
+
+    // FORMULARIO ATORES 
+    public function atores (Request $request){
+              
+        if(Session::has('loginId')){
+
+           $request->validate([
+            'nome'=>'required',
+            'email'=>'required',
+            'telefone'=>'required',
+            'agencia'=>'required',
+            'rua'=>'required',
+            'numero'=>'required',
+            'codigoPostal'=>'required',
+            'cidade'=>'required',
+            'estado'=>'required',
+            'pais'=>'required',
+            'tipo'=>'required',
+            ]);
+
+            $formulario = new Formulario();
+            $formulario = Formulario::latest()->pluck('id')->first();
+            
+           $atores = new Ator();
+           $atores->nome=$request->nome;
+           $atores->email=$request->email;
+           $atores->telefone=$request->telefone;
+           $atores->agencia=$request->agencia;
+           $atores->rua=$request->rua;
+           $atores->numero=$request->numero;
+           $atores->codigoPostal=$request->codigoPostal;
+           $atores->cidade=$request->cidade;
+           $atores->estado=$request->estado;
+           $atores->pais=$request->pais;
+           $atores->tipo = $request->tipo;
+           $atores->formulario_id =$formulario;
+           
+           $atores->save();
+        }
+    }
+
+    public function agenciamento (Request $request){
+              
+        if(Session::has('loginId')){
+
+           $request->validate([
+            'exemplo'=>'required',
+            'descricao'=>'required',      
+            ]);
+
+            $formulario = new Formulario();
+            $formulario = Formulario::latest()->pluck('id')->first();
+            
+           $agenciamentos = new Agenciamento();
+           $agenciamentos->exemplo=$request->exemplo;
+           $agenciamentos->descricao=$request->descricao;
+           $agenciamentos->formulario_id =$formulario;
+           $agenciamentos->save();
         }
     }
 }
