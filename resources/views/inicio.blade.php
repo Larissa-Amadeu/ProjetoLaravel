@@ -78,7 +78,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-pencil-square"></i></div>
-              <h4 class="title"><a href="#">CADASTRAR</a></h4>
+              <h4 class="title"><a href="{{ route ('route_cadastro')}}">CADASTRAR</a></h4>
         
             </div>
           </div>
@@ -86,17 +86,16 @@
             <div class="icon-box">
               <div class="icon"><i class="bi bi-box-arrow-in-right"></i></div>
               <h4 class="title"><a href="{{ route ('route_login')}}">ACESSAR</a></h4>
-              
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+          
+        <!-- TUTORIAL  <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-book"></i></div>
-              <h4 class="title"><a href="">TUTORIAL</a></h4>
-              
+              <h4 class="title"><a href="">TUTORIAL</a></h4>  
             </div>
           </div>
-        </div>
+        </div>  -->
 
       </div>
     </section><!-- End Featured Services Section -->
