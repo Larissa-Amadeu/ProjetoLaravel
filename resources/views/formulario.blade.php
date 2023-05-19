@@ -139,6 +139,30 @@
                         <button type="submit" class="btn btn-primary" >Salvar</button>
                         <button type="reset" class="btn btn-secondary">Cancelar</button>
                       </div>
+
+                      <script>
+                        // Seleciona o formulário
+                        const form = document.querySelector('form');
+                      
+                        // Adiciona um listener ao evento "submit" do formulário
+                        form.addEventListener('submit', (event) => {
+                          // Previne o comportamento padrão de envio do formulário
+                          event.preventDefault();
+                      
+                          // Desabilita todos os inputs dentro do formulário
+                          const inputs = form.querySelectorAll('input, select, textarea');
+                          inputs.forEach(input => {
+                            input.disabled = true;
+                          });
+                      
+                          // Desabilita os botões de "Salvar" e "Cancelar"
+                          const buttons = form.querySelectorAll('button');
+                          buttons.forEach(button => {
+                            button.disabled = true;
+                          });
+                        });
+                      </script>
+                      
                     
                     </form> <!-- End floating Labels Form -->
                   </div><!-- End Tab 1 Content -->
@@ -223,7 +247,7 @@
                             <label for="floatingTextarea">Descreva o evento de término de propósito</label>
                           </div>
                         </div>
-</div>
+                      </div>
                         <script type="text/javascript">
                           function enableDiv(){
                             var selectedValue = document.getElementById("selecao").value;
@@ -422,7 +446,7 @@
                         <label for="floatingName">Base Legal - Inserir texto ou link da lei</label>
                       </div>
                     </div>
-                    
+                    <br>
                     <div class="col-12">
                       <div class="form-floating">
                       <textarea class="form-control" name="justificativa" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
@@ -465,41 +489,33 @@
                 <form class="tab-pane fade show" id="tab4" action="{{route('dadosPessoais')}}" method="POST"> 
         
                     <!-- Bordered Table -->
-                    
                     <table class="table table-bordered">
                       <thead>
                         <tr>
                           <th scope="col">Descrição</th>
-                          <th scope="col">Recurso</th>
+                          <th scope="col" colspan="2">Recurso</th>
                           <th scope="col">Visualizar</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                    
                           <td>Exemplo de texto</td>
-                          <td>Exemplo de texto</td>
-                          <td><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
-                    
+                          <td colspan="2">Exemplo de texto</td>
+                          <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
                         </tr>
                         <tr>
-                    
                           <td>Exemplo de texto</td>
-                          <td>Exemplo de texto</td>
-                          <td><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
-                    
+                          <td colspan="2">Exemplo de texto</td>
+                          <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
                         </tr>
                         <tr>
-                    
                           <td>Exemplo de texto</td>
-                          <td>Exemplo de texto</td>
-                          <td><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
-                    
+                          <td colspan="2">Exemplo de texto</td>
+                          <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
                         </tr>
-                
                       </tbody>
-                
                     </table>
+                    
                     <!-- End Bordered Table -->
                 
                  
@@ -517,7 +533,7 @@
                                   </div>
                                 </div>
                               </div>
-
+<br>
 
                             <div class="col-md-6">
                               <div class="form-floating mb-3">
@@ -532,7 +548,7 @@
                                 <label for="floatingTextarea">Recursos para Aquisição dos Dados Pessoais</label>
                               </div>
                             </div>
-                          
+                            <br>
                               <div class="coleta-manipulacao">
                                 <div class="col-12">
                                   <div class="form-floating">
@@ -569,43 +585,37 @@
     
                 <form class="tab-pane fade show" id="tab5" action="{{route('atores')}}" method="POST" > 
                   @csrf
-                      <table class="table table-bordered">
-                        <thead>
-                          <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">Editar</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          <tr>
-
-                            <td>Exemplo de texto</td>
-                            <td>Exemplo de texto</td>
-                            <td>Exemplo de texto</td>
-                            <td><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
-                      
-                          </tr>
-                          <tr>
-
-                            <td>Exemplo de texto</td>
-                            <td>Exemplo de texto</td>
-                            <td>Exemplo de texto</td>
-                            <td><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
-                      
-                          </tr>
-                          <tr>
-
-                            <td>Exemplo de texto</td>
-                            <td>Exemplo de texto</td>
-                            <td>Exemplo de texto</td>
-                            <td><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>  
-                          </tr>
-                        </tbody>
-                      </table>  
-                      
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col" class="small-cell">Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Exemplo de texto</td>
+                        <td>Exemplo de texto</td>
+                        <td>Exemplo de texto</td>
+                        <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td>Exemplo de texto</td>
+                        <td>Exemplo de texto</td>
+                        <td>Exemplo de texto</td>
+                        <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td>Exemplo de texto</td>
+                        <td>Exemplo de texto</td>
+                        <td>Exemplo de texto</td>
+                        <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
                       <!--Cadastro Atores-->
 
                       <div class="card"> 
@@ -718,38 +728,33 @@
     
                 <form class="tab-pane fade show" id="tab6" action="{{route('agenciamento')}}" method="POST"> <!-- Tab 6 Content -->
                  @csrf
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr>
-                        <th scope="col">Descrição</th>
-                        <th scope="col">Recurso</th>
-                        <th scope="col">Visualizar</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                  
-                        <td>Exemplo de texto</td>
-                        <td>Exemplo de texto</td>
-                        <td><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
-                  
-                      </tr>
-                      <tr>
-                  
-                        <td>Exemplo de texto</td>
-                        <td>Exemplo de texto</td>
-                        <td><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
-                  
-                      </tr>
-                      <tr>
-                  
-                        <td>Exemplo de texto</td>
-                        <td>Exemplo de texto</td>
-                        <td><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>                 
-                      </tr>
-                    </tbody>              
-                  </table>
-
+                 <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">Descrição</th>
+                      <th scope="col">Recurso</th>
+                      <th scope="col" class="small-cell">Visualizar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Exemplo de texto</td>
+                      <td>Exemplo de texto</td>
+                      <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Exemplo de texto</td>
+                      <td>Exemplo de texto</td>
+                      <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Exemplo de texto</td>
+                      <td>Exemplo de texto</td>
+                      <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                
                   <div class="col-md-6" class="row g-3">
                     <div class="form-floating">
                       <input type="name" class="form-control" id="floatingName" name="exemplo" placeholder="nomeProjeto" name="nomeProjeto">
@@ -768,14 +773,54 @@
                   <button type="submit" class="btn btn-primary" >Salvar</button>
                   <button type="reset" class="btn btn-secondary">Cancelar</button>
                 </div>
-
               </form><!-- End Tab 6 Content -->
+            
+
+              <div class="tab-pane fade show" id="tab7">
+                <section id="team" class="team">
+                  <div class="container" data-aos="fade-up">
+                    <div class="row gy-4">
+
+                      <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                        <div class="member">
+                          <img src="assets/img/team/android_template.png" class="img-fluid" alt="">
+                          <h4>MOBILE</h4>
+                          <span>Template versão mobile</span>
+                          <div class="social">
+                            <a href="assets/img/team/android_template.png" data-gallery="portfolio-gallery-app" class="glightbox"><i class="bi bi-eye"></i></a>
+                            <a href=""><i class="bi bi-download"></i></a>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+                        <div class="member">
+                          <img src="assets/img/team/web_template.jpg" class="img-fluid" alt="">
+                          <h4>WEB</h4>
+                          <span>Template versão Web/Desktop</span>
+                          <div class="social">
+                            <a href="assets/img/team/web_template.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><i class="bi bi-eye"></i></a>
+                            <a href=""><i class="bi bi-download"></i></a>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </section>
               </div>
+          </div>
+
+
+
+
               <div class="tab-content">
               <div class="col-lg-6">
                 <img src="assets/img/features-2.png" class="img-fluid" alt="">
               </div>
           </div>
+
         </section><!-- End Features Section -->
       </div><!-- End Feature Tabs -->
 
