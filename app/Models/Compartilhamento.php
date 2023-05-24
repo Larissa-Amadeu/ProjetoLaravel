@@ -14,6 +14,7 @@ class Compartilhamento extends Model
         'justificativa',
         'baseLegal',
         'acoes',     
+        'file',
     ];
 
     //PROPOSITO -->FORMULARIO
