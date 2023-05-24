@@ -87,9 +87,8 @@ class Controlador extends Controller
     {
         $data = array();
         if(Session::has('loginId')){
-            $data = Cadastro::where('id', '=', Session::get('loginId'))->first();  
+            $data = Cadastro::where('id', '=', Session::get('loginId'))->first(); 
         }
-
         return view('formulario', compact('data'));
     }
 
@@ -131,6 +130,8 @@ class Controlador extends Controller
 
            $request->validate([
                'descricao'=>'required',
+               'baseLegal'=>'required',
+               'file'=> 'required',
             ]);
 
             $formulario = new Formulario();
@@ -139,8 +140,10 @@ class Controlador extends Controller
            $proposito = new Proposito();
            $proposito->descricao=$request->descricao;
            $proposito->baseLegal=$request->baseLegal;
+           $proposito->file=$request->file;
            $proposito->formulario_id =$formulario;
            $proposito->save();
+           return redirect('formulario');
         }
     }
 
@@ -153,6 +156,7 @@ class Controlador extends Controller
                'justificativa'=>'required',
                'baseLegal'=>'required',
                'acoes'=>'required',
+               'file'=>'required',
 
             ]);
 
@@ -163,8 +167,10 @@ class Controlador extends Controller
            $compartilhamento->justificativa=$request->justificativa;
            $compartilhamento->baseLegal=$request->baseLegal;
            $compartilhamento->acoes=$request->acoes;
+           $compartilhamento->file=$request->file;
            $compartilhamento->formulario_id =$formulario;
            $compartilhamento->save();
+           return redirect('formulario');
         }
     }
 
@@ -180,6 +186,8 @@ class Controlador extends Controller
             'acoes'=>'required',
             ]);
 
+            
+
             $formulario = new Formulario();
             $formulario = Formulario::latest()->pluck('id')->first();
             
@@ -190,6 +198,9 @@ class Controlador extends Controller
            $dado->acoes=$request->acoes;
            $dado->formulario_id =$formulario;
            $dado->save();
+           return redirect('formulario');
+
+          
         }
     }
 
@@ -228,8 +239,8 @@ class Controlador extends Controller
            $atores->pais=$request->pais;
            $atores->tipo = $request->tipo;
            $atores->formulario_id =$formulario;
-           
            $atores->save();
+           return redirect('formulario');
         }
     }
 
@@ -238,7 +249,7 @@ class Controlador extends Controller
         if(Session::has('loginId')){
 
            $request->validate([
-            'exemplo'=>'required',
+            'titulo'=>'required',
             'descricao'=>'required',      
             ]);
 
@@ -246,10 +257,11 @@ class Controlador extends Controller
             $formulario = Formulario::latest()->pluck('id')->first();
             
            $agenciamentos = new Agenciamento();
-           $agenciamentos->exemplo=$request->exemplo;
+           $agenciamentos->titulo=$request->titulo;
            $agenciamentos->descricao=$request->descricao;
            $agenciamentos->formulario_id =$formulario;
            $agenciamentos->save();
+           return redirect('formulario');
         }
     }
 }
