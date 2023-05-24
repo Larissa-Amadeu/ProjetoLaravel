@@ -12,7 +12,8 @@ class Proposito extends Model
     protected $connection = 'pgsql';
     protected $fillable = [
         'descricao',
-        'baseLegal'
+        'baseLegal',
+        'file',
     ];
 
     //PROPOSITO -->FORMULARIO
