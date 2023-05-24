@@ -139,29 +139,6 @@
                         <button type="submit" class="btn btn-primary" >Salvar</button>
                         <button type="reset" class="btn btn-secondary">Cancelar</button>
                       </div>
-
-                      <script>
-                        // Seleciona o formulário
-                        const form = document.querySelector('form');
-                      
-                        // Adiciona um listener ao evento "submit" do formulário
-                        form.addEventListener('submit', (event) => {
-                          // Previne o comportamento padrão de envio do formulário
-                          event.preventDefault();
-                      
-                          // Desabilita todos os inputs dentro do formulário
-                          const inputs = form.querySelectorAll('input, select, textarea');
-                          inputs.forEach(input => {
-                            input.disabled = true;
-                          });
-                      
-                          // Desabilita os botões de "Salvar" e "Cancelar"
-                          const buttons = form.querySelectorAll('button');
-                          buttons.forEach(button => {
-                            button.disabled = true;
-                          });
-                        });
-                      </script>
                       
                     
                     </form> <!-- End floating Labels Form -->
@@ -199,7 +176,7 @@
                       </div>
                     </div>
 
-                    <div class="card">  <!-- inicio -->
+                    <div class="card">  
                       <div class="card-body">
                         <br>
                         <h4>Selecionar início de Evento de propósito de uso</h4>
@@ -278,7 +255,7 @@
                           <div class="card">
                             <div class="card-body">
                               <br>
-                              <h4>Selecionar fim de Evento de propósito de uso</h4> <!-- fim -->
+                              <h4>Selecionar fim de Evento de propósito de uso</h4>  
                               <br>
                               <div class="form-floating mb-3">
                                 <select id="selecao2" class="form-select" aria-label="State" onchange="enableDiv2();">
@@ -343,7 +320,19 @@
                       };
                     </script>
 
-                <!--   <div class="text-center">
+                  <div class="card">
+                    <div class="card-body">
+                      <br>
+                      <p class="card-text">Selecione imagens ou vídeos que mostram em que momento o usuário autoriza a Coleta, Manipulação, Transferência, Compartilhamento ou Divulgação dos Dados Pessoais.</p>
+                      <br>
+                      <div class="input-group">
+                        <input type="file" class="form-control" name="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Adicionar</button>
+                      </div>
+                    </div>
+                  </div>  
+
+               <!--   <div class="text-center">
                           <button type="submit" class="btn btn-primary">Documentação</button>
                         </div>
                    <section id="testimonials" class="testimonials section-bg">
@@ -407,7 +396,7 @@
                       </div>
 
                     </section>
-                    <br>End testimonial item -->
+                    <br>-->
                     
           
 
@@ -465,17 +454,17 @@
                     <br> 
 
                         
-                    <!--    <div class="card">
+                       <div class="card">
                           <div class="card-body">
                             <br>
                             <p class="card-text">Selecione imagens ou vídeos que mostram em que momento o usuário autoriza a Coleta, Manipulação, Transferência, Compartilhamento ou Divulgação dos Dados Pessoais.</p>
                             <br>
                             <div class="input-group">
-                              <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                              <input type="file" class="form-control" name="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                               <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Adicionar</button>
                             </div>
                           </div>
-                        </div>  -->
+                        </div>  
 
                         <div class="text-center">
                           <button type="submit" class="btn btn-primary">Salvar</button>
@@ -487,7 +476,7 @@
                 <!-- Tab 4 Content -->
 
                 <form class="tab-pane fade show" id="tab4" action="{{route('dadosPessoais')}}" method="POST"> 
-        
+         @csrf
                     <!-- Bordered Table -->
                     <table class="table table-bordered">
                       <thead>
@@ -499,18 +488,18 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Exemplo de texto</td>
-                          <td colspan="2">Exemplo de texto</td>
+                          <td>exemplo</td>
+                          <td colspan="2">exemplo</td>
                           <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
                         </tr>
                         <tr>
-                          <td>Exemplo de texto</td>
-                          <td colspan="2">Exemplo de texto</td>
+                          <td>exemplo</td>
+                          <td colspan="2">exemplo</td>
                           <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
                         </tr>
                         <tr>
-                          <td>Exemplo de texto</td>
-                          <td colspan="2">Exemplo de texto</td>
+                          <td>exemplo</td>
+                          <td colspan="2">exemplo</td>
                           <td class="small-cell"><a class="btn btn-primary" href="" role="button"><i class="bi bi-folder"></i></a></td>
                         </tr>
                       </tbody>
@@ -757,15 +746,15 @@
                 
                   <div class="col-md-6" class="row g-3">
                     <div class="form-floating">
-                      <input type="name" class="form-control" id="floatingName" name="exemplo" placeholder="nomeProjeto" name="nomeProjeto">
-                      <label for="floatingName">exemplo</label>
+                      <input type="name" class="form-control" id="floatingName" name="titulo" placeholder="nomeProjeto" name="nomeProjeto">
+                      <label for="floatingName">Título</label>
                     </div>
                   </div>
                   <br>
                 <div class="col-12">
                   <div class="form-floating">
                     <textarea class="form-control" placeholder="descricao" name="descricao" id="floatingTextarea" style="height: 100px;"></textarea>
-                    <label for="floatingTextarea">exemplo</label>
+                    <label for="floatingTextarea">Descrição</label>
                   </div>
                 </div>
                 <br>
@@ -811,6 +800,8 @@
                 </section>
               </div>
           </div>
+
+          
 
 
 
