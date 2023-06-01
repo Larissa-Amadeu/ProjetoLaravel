@@ -33,20 +33,41 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <h1 class="logo"><a href="index.html">TR DESIGN</a></h1>
-      <!-- logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          
-          <li><a class="nav-link scrollto active" href="{{ route ('route_inicio')}}">INÍCIO</a></li>
-          <li><a class="nav-link scrollto" href="{{ route ('route_inicio')}}">MEUS PROJETOS</a></li>
-          <li><a class="nav-link scrollto" href="{{ route ('route_formulario')}}">NOVO PROJETO</a></li>
-          <li><a class="nav-link scrollto" href="{{ route ('route_inicio')}}">TR-MODEL</a></li>
-          <li><a class="getstarted scrollto" href="login">ACESSAR</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+<nav id="navbar" class="navbar">
+  <ul>
+    <li><a class="nav-link scrollto active" href="{{ route('route_inicio') }}">INÍCIO</a></li>
+    
+    @if(session('loginId'))
+      <li><a class="nav-link scrollto" href="{{ route('route_inicio') }}">MEUS PROJETOS</a></li>
+      <li><a class="nav-link scrollto" href="{{ route('route_formulario') }}">NOVO PROJETO</a></li>
+    @endif
+    
+    <li><a class="nav-link scrollto" href="{{ route('route_inicio') }}">TR-MODEL</a></li>
+    
+    @if(session('loginId'))
+      <li><a class="getstarted scrollto" href="{{ route('logout') }}">SAIR</a></li>
+    @else
+      <li><a class="getstarted scrollto" href="{{ route('route_login') }}">ACESSAR</a></li>
+    @endif
+    
+    @if(session('loginId'))
+    <div class="login-info">
+      <div class="box">
+        <h6><span class="text">Login: </span>{{$data->name}}</h6>
+      </div>
+      <h6>{{$data->email}}</h6>
+    </div>
+    @endif
+
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
+</nav><!-- .navbar -->
+
+</div>
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
+</nav>
 
     </div>
   </header><!-- End Header -->
