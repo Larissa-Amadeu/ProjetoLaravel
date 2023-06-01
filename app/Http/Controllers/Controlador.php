@@ -18,7 +18,37 @@ class Controlador extends Controller
 {
     public function inicio ()
     {
-        return view('inicio');
+        $data = array();
+        if(Session::has('loginId')){
+            $data = Cadastro::where('id', '=', Session::get('loginId'))->first(); 
+        }
+        return view('inicio', compact('data'));
+    }
+
+    public function index ()
+    {
+        return view('index');
+    }
+
+    
+    public function dados_publicos ()
+    {
+        return view('buscadados');
+    }
+
+    public function templates()
+    {
+        return view('templates');
+    }
+
+    public function projetos()
+    {
+        $data = array();
+        if(Session::has('loginId')){
+            $data = Cadastro::where('id', '=', Session::get('loginId'))->first();
+        }
+
+        return view('meusprojetos', compact('data'));
     }
 
     public function cadastro ()
@@ -118,6 +148,7 @@ class Controlador extends Controller
             $formulario->save();
             return redirect('formulario');
 
+            
          }
 
      }
