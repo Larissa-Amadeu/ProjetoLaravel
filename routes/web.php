@@ -31,14 +31,20 @@ Route::post('/agenciamento',[Controlador::class,'agenciamento'])->name('agenciam
 
 
 
-Route::get('/logout', [Controlador::class, 'logout']);
+Route::get('/logout', [Controlador::class, 'logout'])->name('logout');
 
 Route::get('/inicio', [Controlador::class, 'inicio'])->name('route_inicio'); 
 
+Route::get('/', [Controlador::class, 'index'])->name('route_index');
+
+Route::get('/buscadados', [Controlador::class, 'dados_publicos'])->name('route_dados_publicos');
+
+Route::get('/templates', [Controlador::class, 'templates'])->name('route_templates');
+
+Route::get('/projetos', [Controlador::class, 'projetos'])->name('route_projetos'); 
 
 Route::get('/cadastro',[Controlador ::class, 'cadastro'])->name('route_cadastro');
 Route::post('/cadastro-usuario',[Controlador::class,'cadastroUsuario'])->name('cadastro-usuario');
 
 Route::get('/login',[Controlador::class, 'login'])->name('route_login');
 Route::post('/login-usuario', [Controlador::class,'loginUsuario'])->name('login-usuario');
-
