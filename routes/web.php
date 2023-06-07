@@ -43,6 +43,8 @@ Route::get('/templates', [Controlador::class, 'templates'])->name('route_templat
 
 Route::get('/projetos', [Controlador::class, 'projetos'])->name('route_projetos'); 
 
+Route::get('/meusProjetos', [Controlador::class, 'meusProjetos'])->name('route_meusProjetos'); 
+
 Route::get('/cadastro',[Controlador ::class, 'cadastro'])->name('route_cadastro');
 Route::post('/cadastro-usuario',[Controlador::class,'cadastroUsuario'])->name('cadastro-usuario');
 
