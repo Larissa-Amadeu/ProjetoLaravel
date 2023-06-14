@@ -143,9 +143,50 @@ require_once('assets\templates\web\config\connection.php');
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Salvar</button>
+                  <button type="submit" id="salvar-dados" class="btn btn-primary">Salvar</button>
                   <button type="reset" class="btn btn-secondary">Cancelar</button>
-                </div>          
+                </div>
+
+                <script>
+                  // Capturando os elementos do formulário
+                  var nomeProjetoInput = document.getElementById('floatingName');
+                  var plataformaSelect = document.getElementById('floatingSelect');
+                  var descricaoTextarea = document.getElementById('floatingTextarea');
+                
+                  // Adicionando um evento de mudança aos elementos do formulário
+                  nomeProjetoInput.addEventListener('change', exibirInformacoes);
+                  plataformaSelect.addEventListener('change', exibirInformacoes);
+                  descricaoTextarea.addEventListener('change', exibirInformacoes);
+                
+                  function exibirInformacoes() {
+                    // Obtendo os valores dos campos do formulário
+                    var nomeProjeto = nomeProjetoInput.value;
+                    var plataforma = plataformaSelect.options[plataformaSelect.selectedIndex].text;
+                    var descricao = descricaoTextarea.value;
+                
+                    // Montando a string com as informações preenchidas
+                    var informacoes = "Nome do Projeto: " + nomeProjeto + "\n";
+                    informacoes += "Plataforma: " + plataforma + "\n";
+                    informacoes += "Descrição do Projeto: " + descricao;
+                
+                    // Exibindo as informações no textarea
+                    descricaoTextarea.value = informacoes;
+                  }
+                </script>
+                
+
+                <script>
+                  $(document).ready(function() {
+                    
+                    $('#salvar-dados').click(function(e) {
+                      e.preventDefault(); 
+                      
+                      
+                      $('a[href="#tab2"]').tab('show');
+                    });
+                  });
+                </script>
+                
 
               </form> <!-- End floating Labels Form -->
             </div><!-- End Tab 1 Content -->
