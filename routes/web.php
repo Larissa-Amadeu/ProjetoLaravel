@@ -30,7 +30,6 @@ Route::post('/agenciamento',[Controlador::class,'agenciamento'])->name('agenciam
 
 
 
-
 Route::get('/logout', [Controlador::class, 'logout'])->name('logout');
 
 Route::get('/inicio', [Controlador::class, 'inicio'])->name('route_inicio'); 
