@@ -22,15 +22,15 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/form.css" rel="stylesheet">
 
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
+  
+    <div class="container d-flex align-items-center justify-content-between" id="header" class="fixed-top">
 
       <h1 class="logo"><a href="{{ route ('route_index')}}">TR DESIGN</a></h1>
       <!-- logo -->
@@ -46,13 +46,140 @@
       </nav><!-- .navbar -->
 
     </div>
-  </header><!-- End Header -->
+  
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title text-center">Formulário de Busca</h1>
+                  <!-- ... -->
+          @csrf
+                  <div class="tab-content">
+                    <div class="tab-pane fade show active" >
+                      <form class="row g-3" action="{{route('route_dados_publicos')}}" method="GET">
+        
+                        <div class="col-md-10">
+                          <div class="form-floating">
+                            <input type="text" class="form-control" id="Search" placeholder="nomeProjetoBusca" name="buscarDados">
+                            <label for="floatingName">Dados do Projeto</label>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingSelect" aria-label="State" placeholder="desktop" name="tipo">
+                              <option value="1" {{ old('tipo') == '1' ? 'selected' : '' }}>E</option>
+                              <option value="2" {{ old('tipo') == '2' ? 'selected' : '' }}>OU</option>
+                            </select>
+                            <label for="floatingSelect"></label>
+                          </div>
+                          @if(old('plataforma'))
+                          <p>Opção selecionada: {{ old('tipo') == '1' ? 'AND' : (old('tipo') == '2' ? 'OR' : (old('plataforma') == '3' ? 'Mobile' : 'IoT')) }}</p>
+                          @endif
+                        </div>
+                        <div class="form-group">
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox1" checked>
+                            <label class="form-check-label" for="checkbox1">Nome do Projeto</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox2" checked>
+                            <label class="form-check-label" for="checkbox2">Plataforma</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox3" checked>
+                            <label class="form-check-label" for="checkbox3">Descrição</label>
+                          </div>   
+                        </div>
 
-    <h1>Criar aqui um formulário de busca</h1>
+                        <div class="col-md-10">
+                          <div class="form-floating">
+                            <input type="name" class="form-control" id="floatingName" placeholder="nomeProjeto" name="nomeProjeto">
+                            <label for="floatingName">Proposito de Uso</label>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingSelect" aria-label="State" placeholder="desktop" name="plataforma">
+                              <option value="1" {{ old('tipo') == '1' ? 'selected' : '' }}>E</option>
+                              <option value="2" {{ old('tipo') == '2' ? 'selected' : '' }}>OU</option>
+                            </select>
+                            <label for="floatingSelect"></label>
+                          </div>
+                          @if(old('plataforma'))
+                          <p>Opção selecionada: {{ old('plataforma') == '1' ? 'Desktop' : (old('plataforma') == '2' ? 'Web' : (old('plataforma') == '3' ? 'Mobile' : 'IoT')) }}</p>
+                          @endif
+                        </div>
+                        <div class="form-group">
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox1" checked>
+                            <label class="form-check-label" for="checkbox1">Descrição</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox2" checked>
+                            <label class="form-check-label" for="checkbox2">Base Legal</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox3" checked>
+                            <label class="form-check-label" for="checkbox3">Data ínicio</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox4" checked>
+                            <label class="form-check-label" for="checkbox4">Data fim</label>
+                          </div>
+                        </div>
 
+                        <div class="col-md-10">
+                          <div class="form-floating">
+                            <input type="name" class="form-control" id="floatingName" placeholder="nomeProjeto" name="nomeProjeto">
+                            <label for="floatingName">Compartilhamento</label>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingSelect" aria-label="State" placeholder="desktop" name="plataforma">
+                              <option value="1" {{ old('plataforma') == '1' ? 'selected' : '' }}>E</option>
+                              <option value="2" {{ old('plataforma') == '2' ? 'selected' : '' }}>OU</option>
+                            </select>
+                            <label for="floatingSelect"></label>
+                          </div>
+                          @if(old('plataforma'))
+                          <p>Opção selecionada: {{ old('plataforma') == '1' ? 'Desktop' : (old('plataforma') == '2' ? 'Web' : (old('plataforma') == '3' ? 'Mobile' : 'IoT')) }}</p>
+                          @endif
+                        </div>
+                        <div class="form-group">
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox1" checked>
+                            <label class="form-check-label" for="checkbox1">Tipo</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox2" checked>
+                            <label class="form-check-label" for="checkbox2">Base Legal</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox3" checked>
+                            <label class="form-check-label" for="checkbox3">Justificativa</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="checkbox4" checked>
+                            <label class="form-check-label" for="checkbox4">Ações ou Eventos</label>
+                          </div>
+                        </div>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-primary">Buscar</button>
+                        </div>
+                        <br>
+                      </form> <!-- End floating Labels Form -->
+                    </div><!-- End Tab 1 Content -->   
+
+          
+        </form>
+        <!-- ... -->
+
+        </div>
+      </div>
+    </div>
     
     </section><!-- End Featured Services Section -->
 
