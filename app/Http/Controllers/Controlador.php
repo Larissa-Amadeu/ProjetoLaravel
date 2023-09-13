@@ -31,10 +31,26 @@ class Controlador extends Controller
     }
 
     
-    public function dados_publicos ()
-    {
-        return view('buscadados');
+    public function buscadados() {
+
+        $buscarDados = request('buscarDados');
+
+        if($buscarDados){
+
+            $formularios = Formulario::where([
+                ['nomeProjeto', 'like', '%'.$buscarDados.'%']
+            ])->get();
+
+        } else {
+            $formularios = Formulario::all();
+        }
+
+        
+        
+        return view('buscadados',['formularios' => $formularios, 'buscarDados'=> $buscarDados]);
     }
+    
+    
 
     public function templates()
     {
@@ -60,6 +76,12 @@ class Controlador extends Controller
     public function login ()
     {
         return view('login');
+    }
+
+    public function exibirBuscas ()
+    {
+      
+        return view('exibirBusca');
     }
     
 
@@ -162,7 +184,7 @@ class Controlador extends Controller
            $request->validate([
                'descricao'=>'required',
                'baseLegal'=>'required',
-               'file'=> 'required',
+               'file' => 'required|image'
             ]);
 
             $formulario = new Formulario();
@@ -171,10 +193,15 @@ class Controlador extends Controller
            $proposito = new Proposito();
            $proposito->descricao=$request->descricao;
            $proposito->baseLegal=$request->baseLegal;
-           $proposito->file=$request->file;
            $proposito->formulario_id =$formulario;
-           $proposito->save();
-           return redirect('formulario');
+           if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $path = $file->store('public/images'); // Salva a imagem em uma pasta dentro de "storage/app/public/images"
+            $proposito->file = $path;
+        }   
+        $proposito->save();
+        return redirect('formulario')->with('proposito', $proposito);
+
         }
     }
 
@@ -295,4 +322,20 @@ class Controlador extends Controller
            return redirect('formulario');
         }
     }
+
+    public function buscar(Request $request)
+{
+    $dadosPessoais = $request->input('dadosPessoais');
+
+    $resultados = DB::table('formularios')
+        ->join('cadastros', 'formularios.cadastro_id', '=', 'cadastros.id')
+        ->where('cadastros.dados_pessoais', 'LIKE', "%$dadosPessoais%")
+        ->select('formularios.*')
+        ->get();
+
+    return view('resultado', compact('resultados'));
+}
+
+
+
 }
