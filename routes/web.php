@@ -29,14 +29,11 @@ Route::post('/atores',[Controlador::class,'atores'])->name('atores');
 Route::post('/agenciamento',[Controlador::class,'agenciamento'])->name('agenciamento');
 
 
-
 Route::get('/logout', [Controlador::class, 'logout'])->name('logout');
 
 Route::get('/inicio', [Controlador::class, 'inicio'])->name('route_inicio'); 
 
 Route::get('/', [Controlador::class, 'index'])->name('route_index');
-
-Route::get('/buscadados', [Controlador::class, 'dados_publicos'])->name('route_dados_publicos');
 
 Route::get('/templates', [Controlador::class, 'templates'])->name('route_templates');
 
@@ -49,3 +46,14 @@ Route::post('/cadastro-usuario',[Controlador::class,'cadastroUsuario'])->name('c
 
 Route::get('/login',[Controlador::class, 'login'])->name('route_login');
 Route::post('/login-usuario', [Controlador::class,'loginUsuario'])->name('login-usuario');
+
+Route::get('/buscadados', [Controlador::class, 'buscadados'])->name('route_dados_publicos'); // FORMULÁRIO 
+
+Route::get('/exibirBuscas', [Controlador::class, 'exibirBuscas'])->name('route_exibir_buscas'); // EXIBIR AS BUSCAS
+
+
+
+
+
+
+
