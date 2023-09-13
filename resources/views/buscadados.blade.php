@@ -24,6 +24,19 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="css/form.css" rel="stylesheet">
 
+  <style>
+    .bg-blue {
+  background-color: #e9edf4; 
+}
+
+
+    .card-title {
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+  font-size: 30px; 
+    }
+    </style>
+
 </head>
 
 <body>
@@ -169,7 +182,7 @@
                         <div class="text-center">
                           <button type="submit" class="btn btn-primary">Buscar</button>
                         </div>
-                        <br>
+
                       </form> <!-- End floating Labels Form -->
                     </div><!-- End Tab 1 Content -->   
 
@@ -182,6 +195,30 @@
     </div>
     
     </section><!-- End Featured Services Section -->
+                     
+                        <div class="container mt-5">                         
+                          <div class="row">
+                            @if($buscarDados)
+                            <h3 class="card-title text-center">Formulários Encontrados:</h3>             
+                            @else
+                            <h3 class="card-title text-center">Todos Formulários:</h3>             
+                            @endif             
+                            <div class="col-md-4">
+                              @foreach($formularios as $formulario)                        
+                              <div class="card bg-blue">
+                                <div class="card-body">                                 
+                                  <h5 class="card-title">{{$formulario->nomeProjeto}}</h5>                             
+                                  <p class="card-text">Autor: {{$formulario->descricao}}</p>
+                                  <a href="#" class="btn btn-primary">Acessar</a>
+                                </div>
+                              </div>
+                              @endforeach
+                              @if(count($formularios)==0)
+                              <p>Não há formulários disponíveis</p>
+                              @endif
+                            </div>
+                          </div>
+                        </div>                  
 
     <section id="about" class="about">
       <div class="container">
