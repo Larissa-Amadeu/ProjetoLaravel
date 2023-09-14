@@ -34,6 +34,22 @@ class Controlador extends Controller
     public function buscadados() {
 
         $buscarDados = request('buscarDados');
+        $checkboxSelecionados = request('checkbox');
+
+        if ($buscarDados && !empty($checkboxSelecionados)) {
+            $formularios = Formulario::where(function ($query) use ($buscarDados, $checkboxSelecionados) {
+                foreach ($checkboxSelecionados as $campo) {
+                    $query->orWhere($campo, 'like', '%' . $buscarDados . '%');
+                }
+            })->get();
+        } else {
+            $formularios = Formulario::all();
+        }
+
+        /* versao anterior
+     * public function buscadados() {
+
+        $buscarDados = request('buscarDados');
 
         if($buscarDados){
 
@@ -44,6 +60,12 @@ class Controlador extends Controller
         } else {
             $formularios = Formulario::all();
         }
+
+        
+        
+        return view('buscadados',['formularios' => $formularios, 'buscarDados'=> $buscarDados]);
+    }
+     */
 
         
         
@@ -78,10 +100,12 @@ class Controlador extends Controller
         return view('login');
     }
 
-    public function exibirBuscas ()
+    public function exibirBusca ($id)
     {
+        $formulario = Formulario::findOrFail($id);
+
       
-        return view('exibirBusca');
+        return view('exibirBusca',['formulario' => $formulario]);
     }
     
 
@@ -322,20 +346,4 @@ class Controlador extends Controller
            return redirect('formulario');
         }
     }
-
-    public function buscar(Request $request)
-{
-    $dadosPessoais = $request->input('dadosPessoais');
-
-    $resultados = DB::table('formularios')
-        ->join('cadastros', 'formularios.cadastro_id', '=', 'cadastros.id')
-        ->where('cadastros.dados_pessoais', 'LIKE', "%$dadosPessoais%")
-        ->select('formularios.*')
-        ->get();
-
-    return view('resultado', compact('resultados'));
-}
-
-
-
 }
