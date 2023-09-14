@@ -49,7 +49,7 @@ Route::post('/login-usuario', [Controlador::class,'loginUsuario'])->name('login-
 
 Route::get('/buscadados', [Controlador::class, 'buscadados'])->name('route_dados_publicos'); // FORMULÁRIO 
 
-Route::get('/exibirBuscas', [Controlador::class, 'exibirBuscas'])->name('route_exibir_buscas'); // EXIBIR AS BUSCAS
+Route::get('/exibirBusca/{id}', [Controlador::class, 'exibirBusca']); // EXIBIR AS BUSCAS
 
 
 
