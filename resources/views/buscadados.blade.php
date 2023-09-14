@@ -93,18 +93,19 @@
                         </div>
                         <div class="form-group">
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="checkbox1" checked>
-                            <label class="form-check-label" for="checkbox1">Nome do Projeto</label>
+                              <input class="form-check-input" type="checkbox" id="checkbox1" name="checkbox[]" value="nomeProjeto" checked>
+                              <label class="form-check-label" for="checkbox1">Nome do Projeto</label>
                           </div>
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="checkbox2" checked>
-                            <label class="form-check-label" for="checkbox2">Plataforma</label>
+                              <input class="form-check-input" type="checkbox" id="checkbox2" name="checkbox[]" value="descricao" checked>
+                              <label class="form-check-label" for="checkbox2">Plataforma</label>
                           </div>
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="checkbox3" checked>
-                            <label class="form-check-label" for="checkbox3">Descrição</label>
-                          </div>   
-                        </div>
+                              <input class="form-check-input" type="checkbox" id="checkbox3" name="checkbox[]" value="descricao" checked>
+                              <label class="form-check-label" for="checkbox3">Descrição</label>
+                          </div>
+                      </div>
+                      
 
                         <div class="col-md-10">
                           <div class="form-floating">
@@ -209,12 +210,12 @@
                                 <div class="card-body">                                 
                                   <h5 class="card-title">{{$formulario->nomeProjeto}}</h5>                             
                                   <p class="card-text">Autor: {{$formulario->descricao}}</p>
-                                  <a href="#" class="btn btn-primary">Acessar</a>
+                                  <a href="/exibirBusca/{{$formulario->id}}" class="btn btn-primary">Acessar</a>
                                 </div>
                               </div>
                               @endforeach
-                              @if(count($formularios)==0)
-                              <p>Não há formulários disponíveis</p>
+                              @if(count($formularios)==0 && $buscarDados)
+                              <p>Não há formulários disponíveis! <a href="/buscadados">Ver Todos</a></p>
                               @endif
                             </div>
                           </div>
@@ -260,3 +261,4 @@
 </body>
 
 </html>
+
