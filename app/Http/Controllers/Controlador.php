@@ -34,8 +34,13 @@ class Controlador extends Controller
     public function buscadados() {
 
         $buscarDados = request('buscarDados');
+        $buscarProposito = request('buscarProposito');
         $checkboxSelecionados = request('checkbox');
-
+    
+        
+        $buscarDescricao = request('checkbox1') == 'on';
+        $buscarBaseLegal = request('checkbox2') == 'on';
+    
         if ($buscarDados && !empty($checkboxSelecionados)) {
             $formularios = Formulario::where(function ($query) use ($buscarDados, $checkboxSelecionados) {
                 foreach ($checkboxSelecionados as $campo) {
@@ -45,8 +50,32 @@ class Controlador extends Controller
         } else {
             $formularios = Formulario::all();
         }
-
-        /* versao anterior
+    
+        if ($buscarProposito) {
+            $propositos = Proposito::where(function ($query) use ($buscarProposito, $buscarDescricao, $buscarBaseLegal) {
+                if ($buscarDescricao) {
+                    $query->orWhere('descricao', 'like', '%' . $buscarProposito . '%');
+                }
+                if ($buscarBaseLegal) {
+                    $query->orWhere('baseLegal', 'like', '%' . $buscarProposito . '%');
+                }
+            })->get();
+        } else {
+            $propositos = Proposito::all();
+        }
+    
+        return view('buscadados', [
+            'formularios' => $formularios,
+            'buscarDados' => $buscarDados,
+            'propositos' => $propositos,
+            'buscarProposito' => $buscarProposito,
+            'buscarDescricao' => $buscarDescricao, // Passando o estado das checkboxes para a view
+            'buscarBaseLegal' => $buscarBaseLegal
+        ]);
+    }
+    
+    
+     /* versao anterior
      * public function buscadados() {
 
         $buscarDados = request('buscarDados');
@@ -64,16 +93,50 @@ class Controlador extends Controller
         
         
         return view('buscadados',['formularios' => $formularios, 'buscarDados'=> $buscarDados]);
+
+        public function buscadados() {
+
+        $buscarDados = request('buscarDados');
+        $checkboxSelecionados = request('checkbox');
+
+        if ($buscarDados && !empty($checkboxSelecionados)) {
+            $formularios = Formulario::where(function ($query) use ($buscarDados, $checkboxSelecionados) {
+                foreach ($checkboxSelecionados as $campo) {
+                    $query->orWhere($campo, 'like', '%' . $buscarDados . '%');
+                }
+            })->get();
+        } else {
+            $formularios = Formulario::all();
+        }
+
+         public function buscaProposito() {
+        $buscarProposito = request('buscarProposito');
+        $checkboxSelecionados = request('checkbox');
+    
+        $query = Proposito::query();
+    
+        if ($buscarProposito) {
+            $query->where('descricao', 'like', '%' . $buscarProposito . '%');
+        }
+    
+        if (!empty($checkboxSelecionados)) {
+            $query->where(function ($query) use ($checkboxSelecionados, $buscarProposito) {
+                foreach ($checkboxSelecionados as $campo) {
+                    $query->orWhere($campo, 'like', '%' . $buscarProposito . '%');
+                }
+            });
+        }
+    
+        $propositos = $query->get();
+    
+        return view('buscadados', [
+            'propositos' => $propositos,
+            'buscarProposito' => $buscarProposito,
+        ]);
+    }
     }
      */
-
-        
-        
-        return view('buscadados',['formularios' => $formularios, 'buscarDados'=> $buscarDados]);
-    }
-    
-    
-
+   
     public function templates()
     {
         return view('templates');
