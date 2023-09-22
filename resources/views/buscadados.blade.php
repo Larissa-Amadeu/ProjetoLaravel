@@ -88,7 +88,7 @@
                             <label for="floatingSelect"></label>
                           </div>
                           @if(old('plataforma'))
-                          <p>Opção selecionada: {{ old('tipo') == '1' ? 'AND' : (old('tipo') == '2' ? 'OR' : (old('plataforma') == '3' ? 'Mobile' : 'IoT')) }}</p>
+                          <p>Opção selecionada: {{ old('tipo') == '1' ? 'E' : (old('tipo') == '2' ? 'OU' : (old('plataforma') == '3' ? 'Mobile' : 'IoT')) }}</p>
                           @endif
                         </div>
                         <div class="form-group">
@@ -105,11 +105,12 @@
                               <label class="form-check-label" for="checkbox3">Descrição</label>
                           </div>
                       </div>
+                    
                       
-
+                    
                         <div class="col-md-10">
                           <div class="form-floating">
-                            <input type="name" class="form-control" id="floatingName" placeholder="nomeProjeto" name="nomeProjeto">
+                            <input type="name" class="form-control" id="floatingName" placeholder="nomeProjeto" name="buscarProposito">
                             <label for="floatingName">Proposito de Uso</label>
                           </div>
                         </div>
@@ -127,12 +128,12 @@
                         </div>
                         <div class="form-group">
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="checkbox1" checked>
-                            <label class="form-check-label" for="checkbox1">Descrição</label>
+                              <input class="form-check-input" type="checkbox" id="checkbox1" name="checkbox1" checked>
+                              <label class="form-check-label" for="checkbox1">Descrição</label>
                           </div>
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="checkbox2" checked>
-                            <label class="form-check-label" for="checkbox2">Base Legal</label>
+                              <input class="form-check-input" type="checkbox" id="checkbox2" name="checkbox2" checked>
+                              <label class="form-check-label" for="checkbox2">Base Legal</label>
                           </div>
                           <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="checkbox3" checked>
@@ -143,7 +144,9 @@
                             <label class="form-check-label" for="checkbox4">Data fim</label>
                           </div>
                         </div>
+                     
 
+        
                         <div class="col-md-10">
                           <div class="form-floating">
                             <input type="name" class="form-control" id="floatingName" placeholder="nomeProjeto" name="nomeProjeto">
@@ -203,23 +206,49 @@
                             <h3 class="card-title text-center">Formulários Encontrados:</h3>             
                             @else
                             <h3 class="card-title text-center">Todos Formulários:</h3>             
-                            @endif             
+                            @endif                
                             <div class="col-md-4">
-                              @foreach($formularios as $formulario)                        
+                              @foreach($formularios as $formulario)                                                                              
                               <div class="card bg-blue">
                                 <div class="card-body">                                 
                                   <h5 class="card-title">{{$formulario->nomeProjeto}}</h5>                             
                                   <p class="card-text">Autor: {{$formulario->descricao}}</p>
                                   <a href="/exibirBusca/{{$formulario->id}}" class="btn btn-primary">Acessar</a>
                                 </div>
-                              </div>
-                              @endforeach
+                              </div>  
+                              @endforeach                          
                               @if(count($formularios)==0 && $buscarDados)
                               <p>Não há formulários disponíveis! <a href="/buscadados">Ver Todos</a></p>
                               @endif
                             </div>
                           </div>
-                        </div>                  
+                        </div>
+
+                        <div class="container mt-5">                         
+                          <div class="row">
+                            @if($buscarProposito)
+                            <h3 class="card-title text-center">Formulários Encontrados:</h3>             
+                            @else
+                            <h3 class="card-title text-center">Todos Formulários:</h3>             
+                            @endif                
+                            <div class="col-md-4">
+                              @foreach($propositos as $proposito)                                                                              
+                              <div class="card bg-blue">
+                                <div class="card-body">                                 
+                                  <h5 class="card-title">{{$proposito->descricao}}</h5>                             
+                                  <p class="card-text">Autor: {{$proposito->baseLegal}}</p>
+                                  <a href="/exibirBusca/{{$proposito->id}}" class="btn btn-primary">Acessar</a>
+                                </div>
+                              </div>  
+                              @endforeach                          
+                              @if(count($propositos)==0 && $buscarProposito)
+                              <p>Não há formulários disponíveis! <a href="/buscadados">Ver Todos</a></p>
+                              @endif
+                            </div>
+                          </div>
+                        </div>
+                        
+                        
 
     <section id="about" class="about">
       <div class="container">
